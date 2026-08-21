@@ -30,3 +30,6 @@ ioc/iocBoot/iocSourceObserver/envPaths
 *~
 *.swp
 .DS_Store
+
+# EPICS IOC shell history
+.iocsh_history
