@@ -6,9 +6,9 @@
 int main(int argc, char *argv[]) {
     if (argc >= 2) {
         iocsh(argv[1]);
-        epicsExit(0);
-        return EXIT_SUCCESS;
     }
+
+    /* Keep the IOC shell alive after the startup script reaches EOF. */
     iocsh(nullptr);
     epicsExit(0);
     return EXIT_SUCCESS;

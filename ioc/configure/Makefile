@@ -1,3 +1,3 @@
-TOP=../..
+TOP=..
 include $(TOP)/configure/CONFIG
-include $(TOP)/configure/RULES
+include $(EPICS_BASE)/configure/RULES

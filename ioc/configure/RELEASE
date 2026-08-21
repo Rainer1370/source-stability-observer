@@ -1,3 +1,2 @@
-# Change this for the target machine, or override it before building.
-# Example: make EPICS_BASE=/usr/lib/epics
-EPICS_BASE ?= /usr/lib/epics
+# Default Ubuntu EPICS Base location. Override for another installation.
+EPICS_BASE = /usr/lib/epics
