@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Source Stability Observer</name>
+  <width>1440</width>
+  <height>1000</height>
+  <background_color><color red="220" green="225" blue="230"/></background_color>
+  
+  <grid_step_x>10</grid_step_x><grid_step_y>10</grid_step_y><show_grid>true</show_grid>
+
+  <widget type="rectangle" version="2.0.0">
+    <name>Header</name><x>0</x><y>0</y><width>1440</width><height>64</height>
+    <background_color><color red="12" green="38" blue="58"/></background_color>
+    <line_color><color red="12" green="38" blue="58"/></line_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Title</name><x>24</x><y>8</y><width>700</width><height>42</height>
+    <text>SOURCE STABILITY OBSERVER</text>
+    <font><family>Liberation Sans</family><style>BOLD</style><size>26.0</size></font>
+    <foreground_color><color red="241" green="248" blue="252"/></foreground_color>
+    <transparent>true</transparent><horizontal_alignment>0</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>Subtitle</name><x>727</x><y>19</y><width>430</width><height>28</height>
+    <text>External diagnostics · Digital twin · Read only</text>
+    <font><family>Liberation Sans</family><style>REGULAR</style><size>15.0</size></font>
+    <foreground_color><color red="104" green="221" blue="230"/></foreground_color>
+    <transparent>true</transparent><horizontal_alignment>2</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>Time of day</name><x>1170</x><y>14</y><width>245</width><height>34</height>
+    <pv_name>SSO:IOC:TIME_OF_DAY</pv_name>
+    <font><family>Liberation Sans</family><style>BOLD</style><size>15.0</size></font>
+    <foreground_color><color red="255" green="255" blue="255"/></foreground_color>
+    <background_color><color red="28" green="63" blue="82"/></background_color>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+
+  <widget type="rectangle" version="2.0.0">
+    <name>Status band</name><x>16</x><y>76</y><width>1408</width><height>58</height>
+    <background_color><color red="245" green="248" blue="250"/></background_color>
+    <line_color><color red="122" green="139" blue="153"/></line_color><line_width>1</line_width>
+  </widget>
+  <widget type="label" version="2.0.0"><name>Simulation label</name><x>31</x><y>87</y><width>95</width><height>30</height><text>SIMULATION</text><font><family>Liberation Sans</family><style>BOLD</style><size>12.0</size></font><transparent>true</transparent></widget>
+  <widget type="led" version="2.0.0"><name>Simulation active</name><x>128</x><y>88</y><width>28</width><height>28</height><pv_name>SSO:SIM:ACTIVE</pv_name><off_color><color red="142" green="151" blue="158"/></off_color><on_color><color red="23" green="190" blue="104"/></on_color></widget>
+  <widget type="textupdate" version="2.0.0"><name>Fault mode</name><x>166</x><y>84</y><width>156</width><height>36</height><pv_name>SSO:SIM:FAULT_MODE</pv_name><font><family>Liberation Sans</family><style>BOLD</style><size>14.0</size></font><horizontal_alignment>1</horizontal_alignment></widget>
+  <widget type="label" version="2.0.0"><name>T8 label</name><x>350</x><y>87</y><width>96</width><height>30</height><text>T8 SOURCE</text><font><family>Liberation Sans</family><style>BOLD</style><size>12.0</size></font><transparent>true</transparent></widget>
+  <widget type="led" version="2.0.0"><name>T8 connected</name><x>444</x><y>88</y><width>28</width><height>28</height><pv_name>SSO:T8:CONNECTED</pv_name><off_color><color red="203" green="56" blue="56"/></off_color><on_color><color red="23" green="190" blue="104"/></on_color></widget>
+  <widget type="textupdate" version="2.0.0"><name>Sample rate</name><x>482</x><y>84</y><width>116</width><height>36</height><pv_name>SSO:T8:SAMPLE_RATE</pv_name><font><family>Liberation Sans</family><style>BOLD</style><size>14.0</size></font><horizontal_alignment>1</horizontal_alignment></widget>
+  <widget type="label" version="2.0.0"><name>Spot label</name><x>632</x><y>87</y><width>86</width><height>30</height><text>SPOT FIT</text><font><family>Liberation Sans</family><style>BOLD</style><size>12.0</size></font><transparent>true</transparent></widget>
+  <widget type="led" version="2.0.0"><name>Spot valid</name><x>714</x><y>88</y><width>28</width><height>28</height><pv_name>SSO:SPOT:VALID</pv_name><off_color><color red="203" green="56" blue="56"/></off_color><on_color><color red="23" green="190" blue="104"/></on_color></widget>
+  <widget type="textupdate" version="2.0.0"><name>Fit quality</name><x>752</x><y>84</y><width>118</width><height>36</height><pv_name>SSO:SPOT:FIT_QUALITY</pv_name><font><family>Liberation Sans</family><style>BOLD</style><size>14.0</size></font><horizontal_alignment>1</horizontal_alignment></widget>
+  <widget type="label" version="2.0.0"><name>Instability label</name><x>906</x><y>87</y><width>108</width><height>30</height><text>INSTABILITY</text><font><family>Liberation Sans</family><style>BOLD</style><size>12.0</size></font><transparent>true</transparent></widget>
+  <widget type="led" version="2.0.0"><name>Spot unstable</name><x>1013</x><y>88</y><width>28</width><height>28</height><pv_name>SSO:SPOT:UNSTABLE</pv_name><off_color><color red="23" green="190" blue="104"/></off_color><on_color><color red="229" green="57" blue="53"/></on_color></widget>
+  <widget type="textupdate" version="2.0.0"><name>Primary hypothesis band</name><x>1050</x><y>84</y><width>214</width><height>36</height><pv_name>SSO:OBS:PRIMARY_HYPOTHESIS</pv_name><font><family>Liberation Sans</family><style>BOLD</style><size>14.0</size></font><horizontal_alignment>1</horizontal_alignment></widget>
+  <widget type="textupdate" version="2.0.0"><name>Heartbeat</name><x>1282</x><y>84</y><width>124</width><height>36</height><pv_name>SSO:IOC:HEARTBEAT</pv_name><font><family>Liberation Sans</family><style>BOLD</style><size>13.0</size></font><horizontal_alignment>1</horizontal_alignment><tooltip>IOC heartbeat</tooltip></widget>
+
+  <widget type="rectangle" version="2.0.0"><name>Image panel</name><x>16</x><y>148</y><width>902</width><height>408</height><background_color><color red="255" green="255" blue="255"/></background_color><line_color><color red="90" green="110" blue="124"/></line_color></widget>
+  <widget type="label" version="2.0.0"><name>Image panel title</name><x>16</x><y>148</y><width>902</width><height>34</height><text>LIVE FOCUSED-SPOT DIAGNOSTIC IMAGE</text><font><family>Liberation Sans</family><style>BOLD</style><size>16.0</size></font><foreground_color><color red="255" green="255" blue="255"/></foreground_color><background_color><color red="48" green="76" blue="94"/></background_color><horizontal_alignment>1</horizontal_alignment></widget>
+  <widget type="image" version="2.0.0">
+    <name>Spot image</name><x>31</x><y>190</y><width>610</width><height>350</height>
+    <pv_name>SSO:SPOT:IMAGE</pv_name><data_width>128</data_width><data_height>128</data_height>
+    <minimum>0.0</minimum><maximum>4095.0</maximum><show_toolbar>true</show_toolbar>
+    <x_axis><title>X Pixel</title><minimum>0.0</minimum><maximum>127.0</maximum></x_axis>
+    <y_axis><title>Y Pixel</title><minimum>0.0</minimum><maximum>127.0</maximum></y_axis>
+  </widget>
+  <widget type="label" version="2.0.0"><name>Spot metrics heading</name><x>660</x><y>199</y><width>236</width><height>28</height><text>SPOT METRICS</text><font><family>Liberation Sans</family><style>BOLD</style><size>14.0</size></font><foreground_color><color red="12" green="38" blue="58"/></foreground_color><transparent>true</transparent><horizontal_alignment>1</horizontal_alignment></widget>
+  <widget type="label" version="2.0.0"><name>FWHM X label</name><x>665</x><y>241</y><width>104</width><height>30</height><text>FWHM X</text><transparent>true</transparent></widget>
+  <widget type="textupdate" version="2.0.0"><name>FWHM X</name><x>770</x><y>236</y><width>120</width><height>36</height><pv_name>SSO:SPOT:FWHM_X</pv_name><font><family>Liberation Sans</family><style>BOLD</style><size>16.0</size></font><horizontal_alignment>2</horizontal_alignment></widget>
+  <widget type="label" version="2.0.0"><name>FWHM Y label</name><x>665</x><y>283</y><width>104</width><height>30</height><text>FWHM Y</text><transparent>true</transparent></widget>
+  <widget type="textupdate" version="2.0.0"><name>FWHM Y</name><x>770</x><y>278</y><width>120</width><height>36</height><pv_name>SSO:SPOT:FWHM_Y</pv_name><font><family>Liberation Sans</family><style>BOLD</style><size>16.0</size></font><horizontal_alignment>2</horizontal_alignment></widget>
+  <widget type="label" version="2.0.0"><name>Centroid X label</name><x>665</x><y>325</y><width>104</width><height>30</height><text>CENTROID X</text><transparent>true</transparent></widget>
+  <widget type="textupdate" version="2.0.0"><name>Centroid X</name><x>770</x><y>320</y><width>120</width><height>36</height><pv_name>SSO:SPOT:CENTROID_X</pv_name><font><family>Liberation Sans</family><style>BOLD</style><size>16.0</size></font><horizontal_alignment>2</horizontal_alignment></widget>
+  <widget type="label" version="2.0.0"><name>Centroid Y label</name><x>665</x><y>367</y><width>104</width><height>30</height><text>CENTROID Y</text><transparent>true</transparent></widget>
+  <widget type="textupdate" version="2.0.0"><name>Centroid Y</name><x>770</x><y>362</y><width>120</width><height>36</height><pv_name>SSO:SPOT:CENTROID_Y</pv_name><font><family>Liberation Sans</family><style>BOLD</style><size>16.0</size></font><horizontal_alignment>2</horizontal_alignment></widget>
+  <widget type="label" version="2.0.0"><name>Peak label</name><x>665</x><y>409</y><width>104</width><height>30</height><text>PEAK</text><transparent>true</transparent></widget>
+  <widget type="textupdate" version="2.0.0"><name>Peak</name><x>770</x><y>404</y><width>120</width><height>36</height><pv_name>SSO:SPOT:PEAK</pv_name><font><family>Liberation Sans</family><style>BOLD</style><size>16.0</size></font><horizontal_alignment>2</horizontal_alignment></widget>
+  <widget type="label" version="2.0.0"><name>Exposure label</name><x>665</x><y>451</y><width>104</width><height>30</height><text>EXPOSURE</text><transparent>true</transparent></widget>
+  <widget type="textupdate" version="2.0.0"><name>Exposure ID</name><x>770</x><y>446</y><width>120</width><height>36</height><pv_name>SSO:SRC:EXPOSURE_ID</pv_name><font><family>Liberation Sans</family><style>BOLD</style><size>16.0</size></font><horizontal_alignment>2</horizontal_alignment></widget>
+  <widget type="label" version="2.0.0"><name>Image caveat</name><x>660</x><y>495</y><width>235</width><height>42</height><text>Simulated diagnostic frame&#10;128 × 128 float waveform</text><font><family>Liberation Sans</family><style>ITALIC</style><size>11.0</size></font><foreground_color><color red="94" green="105" blue="112"/></foreground_color><transparent>true</transparent><horizontal_alignment>1</horizontal_alignment></widget>
+
+  <widget type="rectangle" version="2.0.0"><name>Diagnostics panel</name><x>932</x><y>148</y><width>492</width><height>408</height><background_color><color red="255" green="255" blue="255"/></background_color><line_color><color red="90" green="110" blue="124"/></line_color></widget>
+  <widget type="label" version="2.0.0"><name>Diagnostics title</name><x>932</x><y>148</y><width>492</width><height>34</height><text>SOURCE INPUTS &amp; OBSERVER RESULTS</text><font><family>Liberation Sans</family><style>BOLD</style><size>16.0</size></font><foreground_color><color red="255" green="255" blue="255"/></foreground_color><background_color><color red="48" green="76" blue="94"/></background_color><horizontal_alignment>1</horizontal_alignment></widget>
+
+  <widget type="label" version="2.0.0"><name>kV label</name><x>950</x><y>200</y><width>100</width><height>28</height><text>kV MEAS</text><transparent>true</transparent></widget>
+  <widget type="textupdate" version="2.0.0"><name>kV value</name><x>1045</x><y>194</y><width>130</width><height>36</height><pv_name>SSO:T8:KV:MEAS</pv_name><font><family>Liberation Sans</family><style>BOLD</style><size>15.0</size></font><horizontal_alignment>2</horizontal_alignment></widget>
+  <widget type="label" version="2.0.0"><name>Tube label</name><x>950</x><y>242</y><width>100</width><height>28</height><text>TUBE I</text><transparent>true</transparent></widget>
+  <widget type="textupdate" version="2.0.0"><name>Tube value</name><x>1045</x><y>236</y><width>130</width><height>36</height><pv_name>SSO:T8:TUBE_CURRENT</pv_name><font><family>Liberation Sans</family><style>BOLD</style><size>15.0</size></font><horizontal_alignment>2</horizontal_alignment></widget>
+  <widget type="label" version="2.0.0"><name>Return label</name><x>950</x><y>284</y><width>100</width><height>28</height><text>RETURN I</text><transparent>true</transparent></widget>
+  <widget type="textupdate" version="2.0.0"><name>Return value</name><x>1045</x><y>278</y><width>130</width><height>36</height><pv_name>SSO:T8:RETURN_CURRENT</pv_name><font><family>Liberation Sans</family><style>BOLD</style><size>15.0</size></font><horizontal_alignment>2</horizontal_alignment></widget>
+  <widget type="label" version="2.0.0"><name>Temp label</name><x>950</x><y>326</y><width>100</width><height>28</height><text>TEMP</text><transparent>true</transparent></widget>
+  <widget type="textupdate" version="2.0.0"><name>Temp value</name><x>1045</x><y>320</y><width>130</width><height>36</height><pv_name>SSO:T8:TEMPERATURE</pv_name><font><family>Liberation Sans</family><style>BOLD</style><size>15.0</size></font><horizontal_alignment>2</horizontal_alignment></widget>
+  <widget type="label" version="2.0.0"><name>Vacuum label</name><x>950</x><y>368</y><width>100</width><height>28</height><text>VACUUM</text><transparent>true</transparent></widget>
+  <widget type="textupdate" version="2.0.0"><name>Vacuum value</name><x>1045</x><y>362</y><width>130</width><height>36</height><pv_name>SSO:T8:VACUUM</pv_name><font><family>Liberation Sans</family><style>BOLD</style><size>15.0</size></font><horizontal_alignment>2</horizontal_alignment></widget>
+  <widget type="label" version="2.0.0"><name>Flux label</name><x>950</x><y>410</y><width>100</width><height>28</height><text>FLUX</text><transparent>true</transparent></widget>
+  <widget type="textupdate" version="2.0.0"><name>Flux value</name><x>1045</x><y>404</y><width>130</width><height>36</height><pv_name>SSO:T8:XRAY_FLUX</pv_name><font><family>Liberation Sans</family><style>BOLD</style><size>15.0</size></font><horizontal_alignment>2</horizontal_alignment></widget>
+
+  <widget type="label" version="2.0.0"><name>Correlation heading</name><x>1196</x><y>198</y><width>205</width><height>28</height><text>CORRELATIONS</text><font><family>Liberation Sans</family><style>BOLD</style><size>13.0</size></font><foreground_color><color red="12" green="38" blue="58"/></foreground_color><transparent>true</transparent><horizontal_alignment>1</horizontal_alignment></widget>
+  <widget type="label" version="2.0.0"><name>Leak corr label</name><x>1200</x><y>242</y><width>98</width><height>28</height><text>Leakage</text><transparent>true</transparent></widget>
+  <widget type="textupdate" version="2.0.0"><name>Leak corr</name><x>1300</x><y>236</y><width>100</width><height>36</height><pv_name>SSO:OBS:CORR:LEAKAGE</pv_name><font><family>Liberation Sans</family><style>BOLD</style><size>15.0</size></font><horizontal_alignment>2</horizontal_alignment></widget>
+  <widget type="label" version="2.0.0"><name>Emission corr label</name><x>1200</x><y>284</y><width>98</width><height>28</height><text>Emission</text><transparent>true</transparent></widget>
+  <widget type="textupdate" version="2.0.0"><name>Emission corr</name><x>1300</x><y>278</y><width>100</width><height>36</height><pv_name>SSO:OBS:CORR:TUBE_CURRENT</pv_name><font><family>Liberation Sans</family><style>BOLD</style><size>15.0</size></font><horizontal_alignment>2</horizontal_alignment></widget>
+  <widget type="label" version="2.0.0"><name>kV corr label</name><x>1200</x><y>326</y><width>98</width><height>28</height><text>kV error</text><transparent>true</transparent></widget>
+  <widget type="textupdate" version="2.0.0"><name>kV corr</name><x>1300</x><y>320</y><width>100</width><height>36</height><pv_name>SSO:OBS:CORR:KV_ERROR</pv_name><font><family>Liberation Sans</family><style>BOLD</style><size>15.0</size></font><horizontal_alignment>2</horizontal_alignment></widget>
+  <widget type="label" version="2.0.0"><name>Thermal corr label</name><x>1200</x><y>368</y><width>98</width><height>28</height><text>Thermal</text><transparent>true</transparent></widget>
+  <widget type="textupdate" version="2.0.0"><name>Thermal corr</name><x>1300</x><y>362</y><width>100</width><height>36</height><pv_name>SSO:OBS:CORR:TEMPERATURE</pv_name><font><family>Liberation Sans</family><style>BOLD</style><size>15.0</size></font><horizontal_alignment>2</horizontal_alignment></widget>
+  <widget type="label" version="2.0.0"><name>CV label</name><x>1200</x><y>410</y><width>98</width><height>28</height><text>Spot CV</text><transparent>true</transparent></widget>
+  <widget type="textupdate" version="2.0.0"><name>Spot CV</name><x>1300</x><y>404</y><width>100</width><height>36</height><pv_name>SSO:OBS:SPOT_CV</pv_name><font><family>Liberation Sans</family><style>BOLD</style><size>15.0</size></font><horizontal_alignment>2</horizontal_alignment></widget>
+  <widget type="textupdate" version="2.0.0"><name>Status text</name><x>950</x><y>463</y><width>450</width><height>70</height><pv_name>SSO:OBS:STATUS_TEXT</pv_name><font><family>Liberation Sans</family><style>BOLD</style><size>14.0</size></font><foreground_color><color red="255" green="255" blue="255"/></foreground_color><background_color><color red="12" green="38" blue="58"/></background_color><horizontal_alignment>1</horizontal_alignment><vertical_alignment>1</vertical_alignment></widget>
+
+  <widget type="rectangle" version="2.0.0"><name>Trend panel</name><x>16</x><y>570</y><width>1408</width><height>410</height><background_color><color red="255" green="255" blue="255"/></background_color><line_color><color red="90" green="110" blue="124"/></line_color></widget>
+  <widget type="label" version="2.0.0"><name>Trend title</name><x>16</x><y>570</y><width>1408</width><height>34</height><text>SYNCHRONIZED LIVE TREND — 10 MINUTES</text><font><family>Liberation Sans</family><style>BOLD</style><size>16.0</size></font><foreground_color><color red="255" green="255" blue="255"/></foreground_color><background_color><color red="48" green="76" blue="94"/></background_color><horizontal_alignment>1</horizontal_alignment></widget>
+  <widget type="stripchart" version="2.0.0">
+    <name>Synchronized source trend</name><x>30</x><y>612</y><width>1380</width><height>350</height>
+    <title>Spot, electrical, thermal, vacuum and flux signals</title><timespan>600.0</timespan><update_period>1.0</update_period><scroll>true</scroll><show_legend>true</show_legend><show_toolbar>true</show_toolbar>
+    <traces>
+      <trace><pv_name>SSO:SPOT:FWHM_X</pv_name><name>FWHM X [um]</name><color><color red="255" green="193" blue="7"/></color><axis>0</axis></trace>
+      <trace><pv_name>SSO:SPOT:FWHM_Y</pv_name><name>FWHM Y [um]</name><color><color red="255" green="112" blue="67"/></color><axis>0</axis></trace>
+      <trace><pv_name>SSO:T8:KV:MEAS</pv_name><name>kV measured</name><color><color red="66" green="133" blue="244"/></color><axis>1</axis></trace>
+      <trace><pv_name>SSO:T8:TUBE_CURRENT</pv_name><name>Tube current [mA]</name><color><color red="171" green="71" blue="188"/></color><axis>2</axis></trace>
+      <trace><pv_name>SSO:T8:RETURN_CURRENT</pv_name><name>Return current [uA]</name><color><color red="239" green="83" blue="80"/></color><axis>3</axis></trace>
+      <trace><pv_name>SSO:T8:TEMPERATURE</pv_name><name>Temperature [degC]</name><color><color red="0" green="150" blue="136"/></color><axis>4</axis></trace>
+      <trace><pv_name>SSO:T8:VACUUM</pv_name><name>Vacuum [mbar]</name><color><color red="121" green="85" blue="72"/></color><axis>5</axis></trace>
+      <trace><pv_name>SSO:T8:XRAY_FLUX</pv_name><name>Flux [norm]</name><color><color red="76" green="175" blue="80"/></color><axis>6</axis></trace>
+    </traces>
+    <y_axes>
+      <y_axis><title>Spot [um]</title><autoscale>true</autoscale><log_scale>false</log_scale></y_axis>
+      <y_axis><title>kV</title><autoscale>true</autoscale><log_scale>false</log_scale></y_axis>
+      <y_axis><title>mA</title><autoscale>true</autoscale><log_scale>false</log_scale></y_axis>
+      <y_axis><title>uA</title><autoscale>true</autoscale><log_scale>false</log_scale></y_axis>
+      <y_axis><title>degC</title><autoscale>true</autoscale><log_scale>false</log_scale></y_axis>
+      <y_axis><title>mbar</title><autoscale>true</autoscale><log_scale>true</log_scale></y_axis>
+      <y_axis><title>Flux</title><autoscale>true</autoscale><log_scale>false</log_scale></y_axis>
+    </y_axes>
+  </widget>
+</display>

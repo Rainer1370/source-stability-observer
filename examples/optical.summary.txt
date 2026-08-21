@@ -1,0 +1,1 @@
+optical: NONE; spot CV=0.0096; correlations leak=-0.098 current=0.280 kV=-0.066 temp=0.000

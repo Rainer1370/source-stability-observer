@@ -1,0 +1,6 @@
+include $(TOP)/configure/RELEASE
+-include $(TOP)/configure/RELEASE.local
+-include $(TOP)/configure/RELEASE.$(EPICS_HOST_ARCH).Common
+-include $(TOP)/configure/RELEASE.Common.$(EPICS_HOST_ARCH)
+-include $(TOP)/configure/RELEASE.$(EPICS_HOST_ARCH)
+include $(EPICS_BASE)/configure/CONFIG

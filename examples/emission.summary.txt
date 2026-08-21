@@ -1,0 +1,1 @@
+emission: SPOT_UNSTABLE|EMISSION_ASSOC; spot CV=0.0384; correlations leak=-0.069 current=0.999 kV=0.118 temp=-0.155

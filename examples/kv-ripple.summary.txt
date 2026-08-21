@@ -1,0 +1,1 @@
+kv-ripple: SPOT_UNSTABLE|KV_ASSOC; spot CV=0.0531; correlations leak=-0.071 current=-0.005 kV=1.000 temp=-0.156

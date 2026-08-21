@@ -1,0 +1,32 @@
+# C build products
+/observer_demo
+/test_observer
+/test_t8_adapter
+/test_exposure_sync
+/libsource_observer.so
+/*.csv
+
+# Python environment and caches
+/.venv/
+__pycache__/
+*.py[cod]
+
+# EPICS build products
+ioc/bin/
+ioc/db/
+ioc/dbd/
+ioc/include/
+ioc/lib/
+ioc/configure/O.*/
+ioc/**/O.*/
+ioc/iocBoot/iocSourceObserver/envPaths
+
+# Local logs and runtime state
+/run/
+*.log
+*.pid
+
+# Editor and OS files
+*~
+*.swp
+.DS_Store

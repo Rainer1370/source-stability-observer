@@ -1,0 +1,167 @@
+# Source Stability Observer soft IOC.
+# Records are writable so a digital twin can caput values now; later the C
+# observer or device support can own the same public PV contract.
+
+record(stringin, "$(P)IOC:TIME_OF_DAY") {
+    field(DESC, "IOC wall-clock display")
+    field(DTYP, "Soft Timestamp")
+    field(INP,  "@%Y-%m-%d %H:%M:%S")
+    field(SCAN, "1 second")
+}
+record(calc, "$(P)IOC:HEARTBEAT") {
+    field(DESC, "Incrementing IOC heartbeat")
+    field(SCAN, "1 second")
+    field(INPA, "$(P)IOC:HEARTBEAT NPP")
+    field(CALC, "A<999999?A+1:0")
+}
+record(bo, "$(P)SIM:ACTIVE") {
+    field(DESC, "Digital twin publishing")
+    field(ZNAM, "STOPPED") field(ONAM, "RUNNING")
+    field(ZSV,  "MINOR")
+}
+record(mbbo, "$(P)SIM:FAULT_MODE") {
+    field(DESC, "Injected truth; observer must not read")
+    field(ZRST, "NORMAL") field(ONST, "LEAKAGE")
+    field(TWST, "EMISSION") field(THST, "KV_RIPPLE")
+    field(FRST, "THERMAL") field(FVST, "CABLE")
+    field(SXST, "OPTICAL") field(SVST, "BAD_IMAGE")
+}
+record(longout, "$(P)SIM:SEED") { field(DESC, "Deterministic random seed") }
+
+record(ao, "$(P)SRC:KV:CMD") {
+    field(DESC, "Requested accelerating voltage") field(EGU, "kV") field(PREC, "3")
+}
+record(ao, "$(P)T8:KV:MEAS") {
+    field(DESC, "Conditioned high-voltage monitor") field(EGU, "kV") field(PREC, "4")
+    field(LOLO, "$(KV_LOLO)") field(LLSV, "MAJOR")
+    field(LOW,  "$(KV_LOW)")  field(LSV,  "MINOR")
+    field(HIGH, "$(KV_HIGH)") field(HSV,  "MINOR")
+    field(HIHI, "$(KV_HIHI)") field(HHSV, "MAJOR") field(HYST, "0.1")
+}
+record(calc, "$(P)OBS:KV:ERROR") {
+    field(DESC, "Measured minus requested kV") field(EGU, "kV") field(PREC, "4")
+    field(INPA, "$(P)T8:KV:MEAS CP") field(INPB, "$(P)SRC:KV:CMD CP") field(CALC, "A-B")
+}
+record(ao, "$(P)T8:TUBE_CURRENT") {
+    field(DESC, "Conditioned tube-current monitor") field(EGU, "mA") field(PREC, "5")
+    field(LOLO, "$(MA_LOLO)") field(LLSV, "MAJOR")
+    field(LOW,  "$(MA_LOW)")  field(LSV,  "MINOR")
+    field(HIGH, "$(MA_HIGH)") field(HSV,  "MINOR")
+    field(HIHI, "$(MA_HIHI)") field(HHSV, "MAJOR") field(HYST, "0.002")
+}
+record(ao, "$(P)T8:RETURN_CURRENT") {
+    field(DESC, "External return-current residual") field(EGU, "uA") field(PREC, "4")
+    field(LOW, "$(RETURN_LOW)") field(LSV, "MAJOR")
+    field(HIGH, "$(RETURN_HIGH)") field(HSV, "MINOR")
+    field(HIHI, "$(RETURN_HIHI)") field(HHSV, "MAJOR") field(HYST, "0.1")
+}
+record(ao, "$(P)T8:FILAMENT_CURRENT") {
+    field(DESC, "External filament-current proxy") field(EGU, "A") field(PREC, "4")
+}
+record(ao, "$(P)T8:TEMPERATURE") {
+    field(DESC, "Source temperature") field(EGU, "degC") field(PREC, "3")
+    field(HIGH, "$(TEMP_HIGH)") field(HSV, "MINOR")
+    field(HIHI, "$(TEMP_HIHI)") field(HHSV, "MAJOR") field(HYST, "0.5")
+}
+record(ao, "$(P)T8:VACUUM") {
+    field(DESC, "Vacuum gauge reading") field(EGU, "mbar") field(PREC, "3")
+    field(HIGH, "$(VAC_HIGH)") field(HSV, "MINOR")
+    field(HIHI, "$(VAC_HIHI)") field(HHSV, "MAJOR")
+}
+record(ao, "$(P)T8:XRAY_FLUX") {
+    field(DESC, "Normalized external flux monitor") field(EGU, "norm") field(PREC, "4")
+    field(LOLO, "$(FLUX_LOLO)") field(LLSV, "MAJOR")
+    field(LOW, "$(FLUX_LOW)") field(LSV, "MINOR") field(HYST, "0.01")
+}
+record(bo, "$(P)T8:CONNECTED") {
+    field(DESC, "Acquisition source health") field(ZNAM, "DISCONNECTED") field(ONAM, "CONNECTED")
+    field(ZSV, "MAJOR")
+}
+record(ao, "$(P)T8:SAMPLE_RATE") {
+    field(DESC, "Acquisition sample rate") field(EGU, "Hz") field(PREC, "1")
+}
+record(longout, "$(P)T8:QUALITY") {
+    field(DESC, "Acquisition quality bit mask")
+}
+
+record(mbbo, "$(P)SRC:PHASE") {
+    field(DESC, "Operating phase")
+    field(ZRST, "RAMP") field(ONST, "SETTLE") field(TWST, "EXPOSURE") field(THST, "IDLE")
+}
+record(longout, "$(P)SRC:EXPOSURE_ID") { field(DESC, "Exposure correlation identifier") }
+record(mbbo, "$(P)SRC:TARGET") {
+    field(DESC, "Simulated target selection")
+    field(ZRST, "Cu") field(ONST, "Cr") field(TWST, "Mo") field(THST, "W") field(FRST, "Si")
+}
+record(bo, "$(P)SRC:XRAY_ENABLE") {
+    field(DESC, "Simulation state only; not an HV command")
+    field(ZNAM, "OFF") field(ONAM, "ON")
+}
+
+record(ao, "$(P)SPOT:SIGMA_X") { field(DESC, "Fitted horizontal sigma") field(EGU, "um") field(PREC, "4") }
+record(ao, "$(P)SPOT:SIGMA_Y") { field(DESC, "Fitted vertical sigma") field(EGU, "um") field(PREC, "4") }
+record(calc, "$(P)SPOT:FWHM_X") {
+    field(DESC, "Horizontal Gaussian FWHM") field(EGU, "um") field(PREC, "4")
+    field(INPA, "$(P)SPOT:SIGMA_X CP") field(CALC, "2.354820045*A")
+}
+record(calc, "$(P)SPOT:FWHM_Y") {
+    field(DESC, "Vertical Gaussian FWHM") field(EGU, "um") field(PREC, "4")
+    field(INPA, "$(P)SPOT:SIGMA_Y CP") field(CALC, "2.354820045*A")
+}
+record(calc, "$(P)SPOT:SIZE") {
+    field(DESC, "RMS-equivalent sigma metric") field(EGU, "um") field(PREC, "4")
+    field(INPA, "$(P)SPOT:SIGMA_X CP") field(INPB, "$(P)SPOT:SIGMA_Y CP")
+    field(CALC, "SQRT((A*A+B*B)/2)")
+}
+record(ao, "$(P)SPOT:CENTROID_X") { field(DESC, "Spot horizontal centroid") field(EGU, "um") field(PREC, "4") }
+record(ao, "$(P)SPOT:CENTROID_Y") { field(DESC, "Spot vertical centroid") field(EGU, "um") field(PREC, "4") }
+record(ao, "$(P)SPOT:PEAK") { field(DESC, "Spot-image peak") field(EGU, "counts") field(PREC, "1") }
+record(ao, "$(P)SPOT:FIT_QUALITY") {
+    field(DESC, "Illustrative fit-quality statistic") field(PREC, "4")
+    field(LOLO, "$(FIT_LOLO)") field(LLSV, "MAJOR")
+    field(LOW, "$(FIT_LOW)") field(LSV, "MINOR") field(HYST, "0.01")
+}
+record(bo, "$(P)SPOT:VALID") {
+    field(DESC, "Spot result passed quality gate") field(ZNAM, "INVALID") field(ONAM, "VALID")
+    field(ZSV, "MAJOR")
+}
+record(bo, "$(P)SPOT:UNSTABLE") {
+    field(DESC, "Observer detected unstable spot") field(ZNAM, "STABLE") field(ONAM, "UNSTABLE")
+    field(OSV, "MAJOR")
+}
+record(longout, "$(P)SPOT:IMAGE:WIDTH") { field(DESC, "Image width") }
+record(longout, "$(P)SPOT:IMAGE:HEIGHT") { field(DESC, "Image height") }
+record(waveform, "$(P)SPOT:IMAGE") {
+    field(DESC, "Flattened float32 simulated spot image")
+    field(FTVL, "FLOAT") field(NELM, "$(IMAGE_NELM)")
+}
+
+record(longout, "$(P)OBS:WINDOW_COUNT") { field(DESC, "Valid samples in observer window") }
+record(longout, "$(P)OBS:ACCEPTED_COUNT") { field(DESC, "Lifetime accepted observer samples") }
+record(longout, "$(P)OBS:REJECTED_COUNT") { field(DESC, "Lifetime rejected observer samples") }
+record(bo, "$(P)OBS:READY") {
+    field(DESC, "Observer rolling window ready") field(ZNAM, "WARMING") field(ONAM, "READY")
+}
+record(ao, "$(P)OBS:SPOT_CV") { field(DESC, "Spot coefficient of variation") field(PREC, "5") }
+record(ao, "$(P)OBS:CORR:LEAKAGE") { field(DESC, "Spot/return-current correlation") field(PREC, "4") }
+record(ao, "$(P)OBS:CORR:TUBE_CURRENT") { field(DESC, "Spot/tube-current correlation") field(PREC, "4") }
+record(ao, "$(P)OBS:CORR:KV_ERROR") { field(DESC, "Spot/kV-error correlation") field(PREC, "4") }
+record(ao, "$(P)OBS:CORR:TEMPERATURE") { field(DESC, "Spot/temperature correlation") field(PREC, "4") }
+record(longout, "$(P)OBS:DIAG_FLAGS") { field(DESC, "Diagnostic association bit mask") }
+record(mbbo, "$(P)OBS:PRIMARY_HYPOTHESIS") {
+    field(DESC, "Strongest current association")
+    field(ZRST, "NONE") field(ONST, "LEAKAGE") field(TWST, "EMISSION")
+    field(THST, "KV") field(FRST, "THERMAL") field(FVST, "OPTICAL_MECH")
+    field(SXST, "DATA_QUALITY")
+}
+record(ao, "$(P)OBS:ASSOCIATION_STRENGTH") {
+    field(DESC, "Magnitude of primary association") field(PREC, "4")
+}
+record(longout, "$(P)OBS:EVENT_ID") { field(DESC, "Diagnostic event identifier") }
+record(bo, "$(P)OBS:EVENT_TRIGGER") {
+    field(DESC, "New event pulse") field(ZNAM, "IDLE") field(ONAM, "TRIGGERED") field(OSV, "MINOR")
+}
+record(bo, "$(P)OBS:DATA_QUALITY") {
+    field(DESC, "Observer input-quality fault") field(ZNAM, "GOOD") field(ONAM, "BAD") field(OSV, "MAJOR")
+}
+record(stringout, "$(P)OBS:STATUS_TEXT") { field(DESC, "Human-readable diagnostic summary") }

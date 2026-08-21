@@ -1,0 +1,1 @@
+normal: NONE; spot CV=0.0012; correlations leak=0.272 current=0.247 kV=0.058 temp=-0.032
