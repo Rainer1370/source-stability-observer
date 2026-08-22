@@ -17,12 +17,25 @@ It reports **associations, not causation**. A controlled intervention or repeata
 fault-removal test would still be required before identifying a root cause.
 
 <p align="center">
+  <img src="docs/images/architecture-overview.png"
+       alt="Readable overview of the Source Stability Observer architecture"
+       width="900">
+</p>
+
+**Figure 1. Presentation-scale architecture overview.** Conditioned low-voltage
+diagnostics enter the hardware-timed LabJack T8 stream while the detector returns
+exposure timing and fitted spot metrics over its own software path. The Linux
+pipeline aligns the two paths, applies the quality-gated C observer, and publishes
+the result through EPICS. See the [system overview](docs/SYSTEM_OVERVIEW.md) for
+channel assignments and the detailed Linux processing sequence.
+
+<p align="center">
   <img src="docs/images/phoebus-leakage.png"
        alt="Phoebus display showing the deterministic leakage scenario"
        width="900">
 </p>
 
-**Figure 1. Deterministic leakage scenario in the EPICS/Phoebus interface.**
+**Figure 2. Deterministic leakage scenario in the EPICS/Phoebus interface.**
 The fitted X-ray spot image appears at upper left; exposure-aligned spot metrics,
 conditioned diagnostics, and Pearson associations appear at upper right; and the
 eight independently scaled, color-coded traces appear below. The observer reports
@@ -77,12 +90,12 @@ Run any mode with:
        width="900">
 </p>
 
-**Figure 2. Deterministic accelerating-voltage-ripple scenario.** The live strip
+**Figure 3. Deterministic accelerating-voltage-ripple scenario.** The live strip
 chart shows matching periodic structure in measured HV output and both spot-width
 metrics. The C observer reports a kV-error association of approximately `r = 1.0`,
 while the competing leakage, emission, and thermal associations remain small.
 
-As with Figure 1, this is deterministic verification stimulus designed to test
+As with Figure 2, this is deterministic verification stimulus designed to test
 classification—not evidence from an operating machine.
 
 ## Ubuntu quick start
@@ -166,6 +179,7 @@ is class-based.
 - [Deployment boundary](docs/DEPLOYMENT_BOUNDARY.md) — implemented functionality and remaining integration work.
 - [Installation](docs/INSTALLATION.md) — Ubuntu setup, operation, and smoke tests.
 - [EPICS IOC notes](ioc/README.md) — IOC build and launch options.
+- [Native IOC build helper](scripts/build_native_ioc.sh) — clean build, executable verification, and optional startup.
 - [Phoebus PV bindings](phoebus/PV_BINDINGS.md) — display-to-PV mapping.
 - [Alarm rationale](ioc/ALARMS.md) — illustrative alarm limits and intended use.
 

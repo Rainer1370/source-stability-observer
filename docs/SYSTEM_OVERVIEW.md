@@ -14,6 +14,17 @@ and how that image is formed.
 
 ## Measurement architecture
 
+![Presentation-scale architecture overview](images/architecture-overview.png)
+
+The overview figure is intentionally sparse enough for a projected presentation.
+The Linux processing detail below preserves the exposure-ID and timing sequence
+without crowding the system-level data path.
+
+[Open the full engineering-reference diagram](images/architecture-detailed.png)
+for the complete channel and interface annotations.
+
+![Linux acquisition, alignment, observation, and publication pipeline](images/architecture-linux-pipeline.png)
+
 | T8 input | Low-voltage signal | Required front end | Diagnostic use |
 |---|---|---|---|
 | AIN0 | HV monitor | Vendor monitor output or rated isolated divider | kV error/ripple |
