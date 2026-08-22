@@ -113,17 +113,18 @@
     <name>Synchronized source trend</name><x>30</x><y>612</y><width>1380</width><height>350</height>
     <title>Spot, electrical, thermal, vacuum and flux signals</title><timespan>600.0</timespan><update_period>1.0</update_period><scroll>true</scroll><show_legend>true</show_legend><show_toolbar>true</show_toolbar>
     <traces>
-      <trace><pv_name>SSO:SPOT:FWHM_X</pv_name><name>FWHM X [um]</name><color><color red="255" green="193" blue="7"/></color><axis>0</axis></trace>
-      <trace><pv_name>SSO:SPOT:FWHM_Y</pv_name><name>FWHM Y [um]</name><color><color red="255" green="112" blue="67"/></color><axis>0</axis></trace>
-      <trace><pv_name>SSO:T8:KV:MEAS</pv_name><name>kV measured</name><color><color red="66" green="133" blue="244"/></color><axis>1</axis></trace>
-      <trace><pv_name>SSO:T8:TUBE_CURRENT</pv_name><name>Tube current [mA]</name><color><color red="171" green="71" blue="188"/></color><axis>2</axis></trace>
-      <trace><pv_name>SSO:T8:RETURN_CURRENT</pv_name><name>Return current [uA]</name><color><color red="239" green="83" blue="80"/></color><axis>3</axis></trace>
-      <trace><pv_name>SSO:T8:TEMPERATURE</pv_name><name>Temperature [degC]</name><color><color red="0" green="150" blue="136"/></color><axis>4</axis></trace>
-      <trace><pv_name>SSO:T8:VACUUM</pv_name><name>Vacuum [mbar]</name><color><color red="121" green="85" blue="72"/></color><axis>5</axis></trace>
-      <trace><pv_name>SSO:T8:XRAY_FLUX</pv_name><name>Flux [norm]</name><color><color red="76" green="175" blue="80"/></color><axis>6</axis></trace>
+      <trace><y_pv>SSO:SPOT:FWHM_X</y_pv><name>FWHM X [um]</name><color><color red="255" green="193" blue="7"/></color><y_axis>0</y_axis></trace>
+      <trace><y_pv>SSO:SPOT:FWHM_Y</y_pv><name>FWHM Y [um]</name><color><color red="255" green="112" blue="67"/></color><y_axis>1</y_axis></trace>
+      <trace><y_pv>SSO:T8:KV:MEAS</y_pv><name>kV measured</name><color><color red="66" green="133" blue="244"/></color><y_axis>2</y_axis></trace>
+      <trace><y_pv>SSO:T8:TUBE_CURRENT</y_pv><name>Tube current [mA]</name><color><color red="171" green="71" blue="188"/></color><y_axis>3</y_axis></trace>
+      <trace><y_pv>SSO:T8:RETURN_CURRENT</y_pv><name>Return current [uA]</name><color><color red="239" green="83" blue="80"/></color><y_axis>4</y_axis></trace>
+      <trace><y_pv>SSO:T8:TEMPERATURE</y_pv><name>Temperature [degC]</name><color><color red="0" green="150" blue="136"/></color><y_axis>5</y_axis></trace>
+      <trace><y_pv>SSO:T8:VACUUM</y_pv><name>Vacuum [mbar]</name><color><color red="121" green="85" blue="72"/></color><y_axis>6</y_axis></trace>
+      <trace><y_pv>SSO:T8:XRAY_FLUX</y_pv><name>Flux [norm]</name><color><color red="76" green="175" blue="80"/></color><y_axis>7</y_axis></trace>
     </traces>
     <y_axes>
-      <y_axis><title>Spot [um]</title><autoscale>true</autoscale><log_scale>false</log_scale></y_axis>
+      <y_axis><title>Spot X [um]</title><autoscale>true</autoscale><log_scale>false</log_scale></y_axis>
+      <y_axis><title>Spot Y [um]</title><autoscale>true</autoscale><log_scale>false</log_scale></y_axis>
       <y_axis><title>kV</title><autoscale>true</autoscale><log_scale>false</log_scale></y_axis>
       <y_axis><title>mA</title><autoscale>true</autoscale><log_scale>false</log_scale></y_axis>
       <y_axis><title>uA</title><autoscale>true</autoscale><log_scale>false</log_scale></y_axis>

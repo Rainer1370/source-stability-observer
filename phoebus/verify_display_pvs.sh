@@ -7,9 +7,14 @@ if ! command -v caget >/dev/null 2>&1; then
     exit 2
 fi
 
-mapfile -t pvs < <(sed -n 's:.*<pv_name>\([^<]*\)</pv_name>.*:\1:p' "$display" | sort -u)
+mapfile -t pvs < <(
+    sed -n \
+        -e 's:.*<pv_name>\([^<]*\)</pv_name>.*:\1:p' \
+        -e 's:.*<y_pv>\([^<]*\)</y_pv>.*:\1:p' \
+        "$display" | sort -u
+)
 if ((${#pvs[@]} == 0)); then
-    echo "ERROR: no pv_name elements found in $display" >&2
+    echo "ERROR: no pv_name or y_pv elements found in $display" >&2
     exit 2
 fi
 
